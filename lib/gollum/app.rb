@@ -49,7 +49,7 @@ module Precious
   class App < Sinatra::Base
     register Mustache::Sinatra
     include Precious::Helpers
-    
+
     dir     = File.dirname(File.expand_path(__FILE__))
 
     # Detect unsupported browsers.
@@ -143,10 +143,13 @@ module Precious
       @path = wikip.path
       @upload_dest   = find_upload_dest(@path)
 
+      # User override
+      live_preview = params.has_key?('live')
+
       wiki = wikip.wiki
       @allow_uploads = wiki.allow_uploads
       if page = wikip.page
-        if wiki.live_preview && page.format.to_s.include?('markdown') && supported_useragent?(request.user_agent)
+        if (live_preview || wiki.live_preview) && page.format.to_s.include?('markdown') && supported_useragent?(request.user_agent)
           live_preview_url = '/livepreview/?page=' + encodeURIComponent(@name)
           if @path
             live_preview_url << '&path=' + encodeURIComponent(@path)

@@ -40,6 +40,12 @@ Mousetrap.bind(['e'], function( e ) {
            class="action-edit-page">Edit</a></li>
       {{/editable}}
     {{/allow_editing}}
+    {{#allow_editing}}
+      {{#editable}}
+        <li class="minibutton"><a href="{{base_url}}/edit/{{escaped_url_path}}?live"
+           class="action-edit-page">Edit (Live)</a></li>
+      {{/editable}}
+    {{/allow_editing}}
     {{#page_exists}}
     <li class="minibutton"><a href="{{base_url}}/history/{{escaped_url_path}}"
        class="action-page-history">History</a></li>
