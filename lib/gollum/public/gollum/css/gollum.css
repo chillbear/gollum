@@ -849,6 +849,7 @@ ul.actions {
 #wiki-content .breadcrumb {
   border-top: none;
   margin-top: 0;
+  font-size: 15px;
 }
 
 .clearfloats {
