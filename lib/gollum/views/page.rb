@@ -20,7 +20,7 @@ module Precious
         path       = Pathname.new(@page.path)
 
         # Always expose a link to the root of the wiki
-        breadcrumb = [%{<a href="#{@base_url}/">root</a>}]
+        breadcrumb = [%{<a href="#{@base_url}/">Wiki</a>}]
 
         # Then for each directory, add a crumb
         path.descend do |crumb|
@@ -31,7 +31,7 @@ module Precious
             # Split the extension from the filename, it looks better!
             breadcrumb << path.basename(path.extname)
           else
-            breadcrumb << %{<a href="#{@base_url}/#{crumb}">#{title}</a>}
+            breadcrumb << %{<a href="#{@base_url}/#{crumb}/">#{title}</a>}
           end
         end
 
